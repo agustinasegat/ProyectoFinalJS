@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Fuente -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Cedarville+Cursive&family=Dosis:wght@400;700&family=Montserrat+Alternates:wght@300&family=Urbanist&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <!-- Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- Toastify -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>H&D Muebles</title>
+</head>
+
+<body class="body">
+    <div class="bg-madera">
+        <header>
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-sm">
+                <div class="container-fluid">
+                    <a class="navbar-brand-mod" href="#">H&D</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto mb-lg-0 nav-ul">
+                            <li class="nav-list"><a aria-current="page" href="#nosotros">Nosotros</a></li>
+                            <li class="nav-list"><a href="#cards">Productos</a>
+                            <li class="nav-list">
+                                <button class="btn-carrito" type="button" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
+                                        class="fa-solid fa-cart-shopping"></i></button>
+                                <span class="position-absolute top start translate-middle badge rounded-pill"
+                                    id="badgeCarrito">
+                                    0 </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- Barra Navegación -->
+        </header>
+        <!-- Galería-->
+        <div class="slider">
+            <div class="slide slide1"></div>
+            <div class="slide slide2"></div>
+            <div class="slide slide3"></div>
+            <div class="slide slide4"></div>
+            <div class="slide slide5"></div>
+            <div class="slide slide6"></div>
+        </div>
+        <!-- Sobre nosotros -->
+        <main id="nosotros" class="nosotros line">
+            <div class="container">
+                <p>Fabricamos muebles de diseño contemporáneo combinando distintos materiales como madera, acero,
+                    cristal,
+                    aluminio, lacas,etc. <br>Desarrollamos proyectos integrales de decoración y diseño interior
+                    fusionando
+                    funcionalidad y estética, sabiendo que cada espacio es único y personal. <br> Nuestro staff de
+                    arquitectos y decoradores te ofrecerán asesoramiento personalizado e integral en el desarrollo y
+                    diseño
+                    de proyectos para tu hogar <br>Conocé nuestra amplia colección de objetos de diseño, protagonistas
+                    de un
+                    estilo de vida y descubrí las últimas tendencias en decoración.</p>
+            </div>
+        </main>
+        <!-- Pagos con tarjeta/Envios-->
+        <section class="bg-pagosyenvios">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="box">
+                            <i class="fa-solid fa-truck-fast icono"></i>
+                            <p class="texto-box">Envíos a domicilio en todo el país</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Lista de Tarjetas -->
+        <div id="cards"></div>
+        <!-- Carrito -->
+        <div class="offcanvas offcanvas-end-mod" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Productos en Carrito</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div class="container">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Item</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Acción</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="items"></tbody>
+                        <tfoot>
+                            <tr id="footer">
+                                <th scope="row" colspan="5">Carrito vacío</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <template id="template-footer">
+                        <th scope="row" colspan="2">Total productos</th>
+                        <td class="total-productos">10</td>
+                        <td>
+                            <button class="btn-vaciar" id="vaciar"><i class="fa-solid fa-trash-can"></i></button>
+                        </td>
+                        <td class="font-weight-bold">$ <span class="total-carrito">5000</span></td>
+                    </template>
+                    <template id="template-carrito">
+                        <tr>
+                            <th class="item-id" scope="row">id</th>
+                            <td class="item-nombre">Item</td>
+                            <td class="item-cantidad">1</td>
+                            <td>
+                                <button class="btn-suma">+</button>
+                                <button class="btn-resta">-</button>
+                            </td>
+                            <td>$ <span class="item-precio">500</span></td>
+                        </tr>
+                    </template>
+                    <button id="comprar" class="btn-comprar">Comprar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Pagos con crédito -->
+    <section class="bg-pagosyenvios">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box">
+                        <i class="fa-solid fa-credit-card icono"></i>
+                        <p class="texto-box">Pagos con todas las tarjetas de crédito</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Formulario de Pago -->
+    <div class="wrapper" id="pago">
+        <div class="container-form">
+            <form action="" class="formulario" id="formulario">
+                <!-- Datos de Envío -->
+                <h2 class="form-head"><i class="fas fa-shipping-fast iform"></i>Datos de Envío</h2>
+                <!--  Nombre -->
+                <div class="formulario__grupo" id="grupo__nombre">
+                    <label for="nombre" class="formulario__label">Nombre</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="nombre" id="nombre">
+                        <p class="formulario__input-error"> Campo obligatorio: Debe contener letras. Puede
+                            contener espacios.</p>
+                    </div>
+                </div>
+                <!-- Apellido -->
+                <div class="formulario__grupo" id="grupo__apellido">
+                    <label for="apellido" class="formulario__label">Apellido</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="apellido" id="apellido">
+                        <p class="formulario__input-error"> Campo obligatorio: Debe contener letras. Puede
+                            contener
+                            espacios.</p>
+                    </div>
+                </div>
+                <!-- Domicilio -->
+                <div class="formulario__grupo" id="grupo__domicilio">
+                    <label for="domicilio" class="formulario__label">Domicilio</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="domicilio" id="domicilio">
+                        <p class="formulario__input-error"> Campo obligatorio: Asegurate de escribir tu
+                            correctamente para que podamos realizar el envío</p>
+                    </div>
+                </div>
+                <!--  Correo Electronico -->
+                <div class="formulario__grupo" id="grupo__correo">
+                    <label for="correo" class="formulario__label">Correo Electrónico</label>
+                    <div class="formulario__grupo-input">
+                        <input type="email" class="formulario__input" name="correo" id="correo">
+                        <p class="formulario__input-error"> Campo obligatorio: Debe tener un formato de email
+                            válido</p>
+                    </div>
+                </div>
+                <!-- Teléfono -->
+                <div class="formulario__grupo" id="grupo__telefono">
+                    <label for="telefono" class="formulario__label">Teléfono</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="telefono" id="telefono">
+                        <p class="formulario__input-error"> Campo obligatorio: Debe contener un mínimo de siete
+                            números</p>
+                    </div>
+                </div>
+                <!-- Provincia -->
+                <div class="provincias">
+                    <label for="provincia">Provincia</label>
+                    <select class="select" id="envio">
+                        <option> </option>
+                        <option value="CABA">CABA</option>
+                        <option value="GBA">Gran Buenos Aires</option>
+                        <option value="Interior">Buenos Aires</option>
+                        <option value="Interior">Catamarca</option>
+                        <option value="Interior">Chaco</option>
+                        <option value="Interior">Chubut</option>
+                        <option value="Interior">Córdoba</option>
+                        <option value="Interior">Corrientes</option>
+                        <option value="Interior">Entre Ríos</option>
+                        <option value="Interior">Formosa</option>
+                        <option value="Interior">Jujuy</option>
+                        <option value="Interior">La Pampa</option>
+                        <option value="Interior">La Rioja</option>
+                        <option value="Interior">Mendoza</option>
+                        <option value="Interior">Misiones</option>
+                        <option value="Interior">Neuquén</option>
+                        <option value="Interior">Mendoza</option>
+                        <option value="Interior">Rio Negro</option>
+                        <option value="Interior">San Juan</option>
+                        <option value="Interior">San Luis</option>
+                        <option value="Interior">Santa Cruz</option>
+                        <option value="Interior">Santiago del Estero</option>
+                        <option value="Interior">Tierra del Fuego</option>
+                        <option value="Interior">Tucumán</option>
+                    </select>
+                    <button type="button" class="btn-calc" id="calcularEnvio" value="CalcularEnvio"><i
+                            class="fa-solid fa-calculator"></i></button>
+                    <div class="input-calculo">
+                        <label for="precio-con-envio">Precio Final Con Envío</label>
+                        <input type="text" class="formulario__input" id="precio-con-envio" readonly>
+                    </div>
+                </div>
+                <!-- Pago -->
+                <h2 class="form-head"><i class="far fa-credit-card iform"></i>Pago</h2>
+                <!-- Tarjeta -->
+                <div class="formulario__grupo" id="grupo__tarjeta">
+                    <label for="tarjeta" class="formulario__label">Número de Tarjeta de Crédito</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="tarjeta" id="tarjeta">
+                        <p class="formulario__input-error"> Campo obligatorio: El número de tarjeta debe
+                            contener 16 dígitos.</p>
+                    </div>
+                </div>
+                <!-- Vencimiento -->
+                <div class="formulario__grupo" id="grupo__vencimiento">
+                    <label for="Vencimiento" class="formulario__label">Fecha de Vencimiento</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="vencimiento" id="vencimiento">
+                        <p class="formulario__input-error"> Campo obligatorio: La fecha de vencimiento debe
+                            escribirse en números con el formato MMAA</p>
+                    </div>
+                </div>
+                <!--  Código de Seguridad -->
+                <div class="formulario__grupo" id="grupo__codigo">
+                    <label for="codigo" class="formulario__label">Código de Seguridad</label>
+                    <div class="formulario__grupo-input">
+                        <input type="text" class="formulario__input" name="codigo" id="codigo">
+                        <p class="formulario__input-error"> Campo obligatorio: El código de Seguridad debe
+                            contenertres o cuatro dígitos numéricos.</p>
+                    </div>
+                </div>
+                <!--Cuotas-->
+                <div>
+                    <label for="cuotas">Cuotas</label>
+                    <select class="select" id="cuotas">
+                        <option> </option>
+                        <option value="1">1 cuota</option>
+                        <option value="2">2 cuotas</option>
+                        <option value="3">3 cuotas</option>
+                        <option value="4">4 cuotas</option>
+                        <option value="5">5 cuotas</option>
+                        <option value="6">6 cuotas</option>
+                    </select>
+                    <button type="button" class="btn-calc" id="calcular" value="Calcular"><i
+                            class="fa-solid fa-calculator"></i></button>
+                    <div class="input-calculo">
+                        <label for="precio-en-cuotas">Pago en Cuotas</label>
+                        <input type="text" class="formulario__input" id="precio-en-cuotas" readonly>
+                    </div>
+                </div>
+                <div class="container-submit">
+                    <button id="btn-enviar" type="submit">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Footer -->
+    <footer id="contacto" class="text-center text-lg-start bg-footer">
+        <div class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <!-- Redes sociales -->
+                <span>Encontranos en redes sociales</span>
+            </div>
+            <div class="icons-social">
+                <a href="" class="me-4 text-reset"><i class="fab fa-facebook-f"></i></a>
+                <a href="" class="me-4 text-reset"><i class="fab fa-twitter"></i></a>
+                <a href="" class="me-4 text-reset"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <!-- H&D -->
+        <div class="container text-center mt-5 mb-5">
+            <div class="row">
+                <!-- Contacto -->
+                <div class="col-md-4 col-lg-4">
+                    <h6 class="footer-title">Contacto H&D</h6>
+                    <p><i class="fas fa-home me-3"></i>Av. Corrientes C.A.B.A.</p>
+                    <p><i class="fas fa-envelope me-3"></i>info@hyd.com</p>
+                    <p><i class="fas fa-phone me-3"></i> + 54 011 366 8800</p>
+                </div>
+                <!-- Mapa -->
+                <div class="col-md-4 col-lg-4">
+                    <iframe class="iframe-map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.041591344355!2d-58.37196168477037!3d-34.60310978045973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a3353293a1c695%3A0x86e197364c26e754!2sAv.%20Corrientes%20200%2C%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1648967144112!5m2!1ses-419!2sar"
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <!-- NL-->
+                <div class="col-md-4 col-lg-4">
+                    <h4 class="footer-title">Recibí nuestras novedades</h4>
+                    <div class="form-nl">
+                        <input class="form-control" name="NL" id="NL" type="email" placeholder="Correo Electrónico">
+                        <button class="btn btn-color" id="btn-NL" type="button"><i
+                                class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Copyright -->
+        <p class="copy"> Todos los derechos reservados| 2022</p>
+    </footer>
+    </div>
+    <!-- SWAL -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Toastify -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <!-- JS -->
+    <script src="./js/script.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

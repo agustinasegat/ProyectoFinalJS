@@ -1,0 +1,19 @@
+{
+  "name": "proyectofetch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agustinasegat/IncoporarFetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/agustinasegat/IncoporarFetch/issues"
+  },
+  "homepage": "https://github.com/agustinasegat/IncoporarFetch#readme",
+  "description": ""
+}
